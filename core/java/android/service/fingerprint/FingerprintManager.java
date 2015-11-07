@@ -16,7 +16,6 @@
 
 package android.service.fingerprint;
 
-import android.app.ActivityManagerNative;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.hardware.fingerprint.Fingerprint;
@@ -25,7 +24,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
-import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.Slog;
@@ -79,6 +77,12 @@ public class FingerprintManager {
     public static final int STATE_IDLE = 0;
     public static final int STATE_AUTHENTICATING = 1;
     public static final int STATE_ENROLLING = 2;
+
+    /**
+     * The time, in milliseconds, to run the device vibrator after a fingerprint
+     * image has been aquired or enrolled by the fingerprint sensor.
+     */
+    public static final long FINGERPRINT_EVENT_VIBRATE_DURATION = 100;
 
     private IFingerprintService mService;
     private FingerprintManagerReceiver mClientReceiver;
@@ -152,28 +156,34 @@ public class FingerprintManager {
     };
 
     /**
-     * Determine whether the user has at least one fingerprint enrolled and enabled.
+     * Determine whether the user has at least one fingerprint enrolled.
      *
-     * @return true if at least one is enrolled and enabled
+     * @return true if at least one is enrolled
      */
-    public boolean enrolledAndEnabled() {
+    public boolean userEnrolled() {
         ContentResolver res = mContext.getContentResolver();
-        return Settings.Secure.getInt(res, "fingerprint_enabled", 0) != 0
-                && FingerprintUtils.getFingerprintsForUser(res, getCurrentUserId()).size() > 0;
+        return FingerprintUtils.getFingerprintsForUser(res, getCurrentUserId()).size() > 0;
+    }
+
+    /**
+     * Start the authentication process.
+     */
+    public void authenticate() {
+        authenticate(false);
     }
 
     /**
      * Start the authentication process.
      *
-     * @param timeout
+     * @param disableVibration True to disable vibration when print scanned
      */
-    public void authenticate() {
+    public void authenticate(boolean disableVibration) {
         if (mServiceReceiver == null) {
             sendError(FINGERPRINT_ERROR_NO_RECEIVER, 0, 0);
             return;
         }
         if (mService != null) try {
-            mService.authenticate(mToken, getCurrentUserId());
+            mService.authenticate(mToken, getCurrentUserId(), disableVibration);
         } catch (RemoteException e) {
             Log.v(TAG, "Remote exception while enrolling: ", e);
             sendError(FINGERPRINT_ERROR_HW_UNAVAILABLE, 0, 0);
@@ -335,6 +345,26 @@ public class FingerprintManager {
             Log.w(TAG, "getNumEnrollmentSteps(): Service not connected!");
         }
         return -1;
+    }
+
+    /**
+     * Set the fingerprint hardware into wake up mode.
+     * During wakeup mode, vibrations will be disabled.
+     *
+     * Requires the caller hold {@link android.Manifest.permission#CONTROL_KEYGUARD} permission.
+     *
+     * @param wakeup whether to enable wakeup mode or not.
+     */
+    public void setWakeup(boolean wakeup) {
+        if (mService != null) {
+            try {
+                mService.setWakeup(mToken, getCurrentUserId(), wakeup);
+            } catch (RemoteException e) {
+                Log.v(TAG, "Remote exception in setWakeup(): ", e);
+            }
+        } else {
+            Log.w(TAG, "setWakeup(): Service not connected!");
+        }
     }
 
     private void sendError(int msg, int arg1, int arg2) {

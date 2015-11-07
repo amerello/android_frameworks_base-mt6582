@@ -56,6 +56,8 @@ import com.android.systemui.statusbar.CommandQueue;
 import com.android.systemui.statusbar.StatusBarPanel;
 import com.android.systemui.statusbar.phone.PhoneStatusBar;
 
+import cyanogenmod.providers.CMSettings;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +84,7 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
 
     private int mThreshold;
     private boolean mHorizontal;
+    private boolean mLeftNavbar;
 
     private boolean mLaunching;
     private boolean mDragging;
@@ -345,7 +348,8 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
                     mDragging = true;
                 }
                 if (mDragging) {
-                    float offset = Math.max(mStartDrag - currentTouch, 0.0f);
+                    float offset = Math.max(mHorizontal && mLeftNavbar
+                            ? currentTouch - mStartTouch : mStartTouch - currentTouch, 0.0f);
                     mCircle.setDragDistance(offset);
                     int indexOfIntersect = mCircle.isIntersecting(event);
                     mDraggedFarEnough = indexOfIntersect != -1;
@@ -354,7 +358,8 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                if (mDraggedFarEnough) {
+                if (mDraggedFarEnough && (mTargetActivities[mCircle.mIntersectIndex] != null &&
+                        !ACTION_NONE.equals(mTargetActivities[mCircle.mIntersectIndex]))) {
                     if (mCircle.isAnimationRunning(true  /* enterAnimation */)) {
                         mLaunchPending = true;
                         mCircle.setAnimatingOut(true);
@@ -406,6 +411,11 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
         mCircle.setHorizontal(horizontal);
     }
 
+    public void setLeftNavbar(boolean leftNavbar) {
+        mLeftNavbar = leftNavbar;
+        mCircle.setLeftNavbar(mLeftNavbar);
+    }
+
     @Override
     public void onClick(View v) {
         if (mInEditMode) {
@@ -426,8 +436,8 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
     public void shortcutPicked(String uri) {
         if (uri != null) {
             int index = mTargetViews.indexOf(mSelectedView);
-            Settings.Secure.putStringForUser(mContext.getContentResolver(),
-                    Settings.Secure.NAVIGATION_RING_TARGETS[index], uri, UserHandle.USER_CURRENT);
+            CMSettings.Secure.putStringForUser(mContext.getContentResolver(),
+                    CMSettings.Secure.NAVIGATION_RING_TARGETS[index], uri, UserHandle.USER_CURRENT);
         }
     }
 
@@ -443,7 +453,7 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
             ContentResolver resolver = mContext.getContentResolver();
             for (int i = 0; i < NavigationRingHelpers.MAX_ACTIONS; i++) {
                 resolver.registerContentObserver(
-                        Settings.Secure.getUriFor(Settings.Secure.NAVIGATION_RING_TARGETS[i]),
+                        CMSettings.Secure.getUriFor(CMSettings.Secure.NAVIGATION_RING_TARGETS[i]),
                         false, this, UserHandle.USER_ALL);
             }
         }
@@ -571,6 +581,7 @@ public class SearchPanelView extends FrameLayout implements StatusBarPanel,
 
     @Override
     protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
         mPicker.cleanup();
     }
 }

@@ -28,7 +28,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.Process;
 import android.os.UserHandle;
-import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +43,10 @@ import com.android.systemui.settings.BrightnessController;
 import com.android.systemui.settings.ToggleSlider;
 import com.android.systemui.statusbar.phone.QSTileHost;
 import com.android.systemui.statusbar.policy.BrightnessMirrorController;
+import com.android.systemui.statusbar.policy.KeyguardMonitor;
+
 import cyanogenmod.app.StatusBarPanelCustomTile;
+import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -91,6 +93,14 @@ public class QSPanel extends ViewGroup {
     private DetailCallback mDetailCallback;
     private int mContainerTop;
 
+    private boolean mHideQsTilesWithSensitiveData;
+    private final KeyguardMonitor.Callback mKeyguardListener = new KeyguardMonitor.Callback() {
+        @Override
+        public void onKeyguardChanged() {
+            refreshAllTiles();
+        }
+    };
+
     public QSPanel(Context context) {
         this(context, null);
     }
@@ -132,8 +142,8 @@ public class QSPanel extends ViewGroup {
      * Enable/disable brightness slider.
      */
     private boolean showBrightnessSlider() {
-        boolean brightnessSliderEnabled = Settings.Secure.getInt(
-            mContext.getContentResolver(), Settings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
+        boolean brightnessSliderEnabled = CMSettings.Secure.getInt(
+            mContext.getContentResolver(), CMSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
                 1) == 1;
         ToggleSlider brightnessSlider = (ToggleSlider) findViewById(R.id.brightness_slider);
         if (brightnessSliderEnabled) {
@@ -174,7 +184,11 @@ public class QSPanel extends ViewGroup {
     }
 
     public void setHost(QSTileHost host) {
+        if (mHost != null) {
+            mHost.getKeyguardMonitor().removeCallback(mKeyguardListener);
+        }
         mHost = host;
+        mHost.getKeyguardMonitor().addCallback(mKeyguardListener);
         mFooter.setHost(host);
     }
 
@@ -221,6 +235,15 @@ public class QSPanel extends ViewGroup {
         mFooter.onConfigurationChanged();
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mHost != null) {
+            mHost.getKeyguardMonitor().removeCallback(mKeyguardListener);
+        }
+        mBrightnessController.unregisterCallbacks();
+    }
+
     public void setExpanded(boolean expanded) {
         if (mExpanded == expanded) return;
         mExpanded = expanded;
@@ -247,12 +270,25 @@ public class QSPanel extends ViewGroup {
     }
 
     public void refreshAllTiles() {
-        mUseMainTiles = Settings.Secure.getIntForUser(getContext().getContentResolver(),
-                Settings.Secure.QS_USE_MAIN_TILES, 1, UserHandle.myUserId()) == 1;
+        mUseMainTiles = CMSettings.Secure.getIntForUser(getContext().getContentResolver(),
+                CMSettings.Secure.QS_USE_MAIN_TILES, 1, UserHandle.myUserId()) == 1;
         for (int i = 0; i < mRecords.size(); i++) {
             TileRecord r = mRecords.get(i);
             r.tileView.setDual(mUseMainTiles && i < 2);
             r.tile.refreshState();
+
+            // If we are in a secure lockscreen, then we should hide tiles with sensitive
+            // data to be accessed from the lockscreen
+            boolean hideTilesWithSensitiveData = mHideQsTilesWithSensitiveData
+                    && mHost != null
+                    && mHost.getKeyguardMonitor().isShowing()
+                    && mHost.getKeyguardMonitor().isSecure();
+            if (hideTilesWithSensitiveData && r.tile.hasSensitiveData()) {
+                r.tileView.setVisibility(View.GONE);
+            } else if (r.tile.hasSensitiveData() && r.lastVisibityState == View.VISIBLE
+                    && r.tileView.getVisibility() != View.VISIBLE){
+                r.tileView.setVisibility(View.VISIBLE);
+            }
         }
         mFooter.refreshState();
     }
@@ -313,7 +349,14 @@ public class QSPanel extends ViewGroup {
                     // then we just set it to invisible, to ensure that it gets visible again
                     visibility = INVISIBLE;
                 }
-                setTileVisibility(r.tileView, visibility);
+                r.lastVisibityState = visibility;
+                boolean hideTilesWithSensitiveData = mHideQsTilesWithSensitiveData
+                        && mHost != null
+                        && mHost.getKeyguardMonitor().isShowing()
+                        && mHost.getKeyguardMonitor().isSecure();
+                if (!r.tile.hasSensitiveData() || !hideTilesWithSensitiveData) {
+                    setTileVisibility(r.tileView, visibility);
+                }
                 setTileEnabled(r.tileView, state.enabled);
                 r.tileView.onStateChanged(state);
             }
@@ -610,6 +653,10 @@ public class QSPanel extends ViewGroup {
         }
     }
 
+    public void setHideQsTilesWithSensitiveData(boolean value) {
+        mHideQsTilesWithSensitiveData = value;
+    }
+
     private class H extends Handler {
         private static final int SHOW_DETAIL = 1;
         private static final int SET_TILE_VISIBILITY = 2;
@@ -637,6 +684,7 @@ public class QSPanel extends ViewGroup {
         int row;
         int col;
         boolean scanState;
+        int lastVisibityState = View.VISIBLE;
     }
 
     private final AnimatorListenerAdapter mTeardownDetailWhenDone = new AnimatorListenerAdapter() {

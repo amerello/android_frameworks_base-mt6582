@@ -41,8 +41,6 @@
   <string name="permdesc_changePrivacyGuardState">Lar appen endre om en annen app kjører med personlighetsvern. Når en app kjører med personlighetsvern vil den ikke ha tilgang til personlig data som kontakter, samtalelogg eller meldinger.</string>
   <string name="privacy_guard_notification">Personvernvakt aktiv</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> vil ikke få tilgang til personlige data</string>
-  <string name="permlab_useHardwareFramework">bruke maskinvare</string>
-  <string name="permdesc_useHardwareFramework">Gir en app tilgang til CM maskinvaren.</string>
   <string name="permlab_setKeyguardWallpaper">Angi tastaturbakgrunn</string>
   <string name="permdesc_setKeyguardWallpaper">Tillat en app å endre låseskjermsbakgrunn.</string>
   <string name="privacy_guard_dialog_title">Personvernvakt</string>
@@ -207,4 +205,8 @@
   <string name="permdesc_accessFingerprintService">Gjør det mulig for en app å få tilgang til fingeravtrykkstjenesten. Appen kan legge til, slette, gi nytt navn på og godkjenne i forhold til fingeravtrykk</string>
   <string name="permlab_resetBatteryStats">tilbakestill batteristatistikk</string>
   <string name="permdesc_resetBatteryStats">Tillater at et program kan tilbakestille nåværende bruksdata om lavt batteri.</string>
+  <string name="silent_mode_priority">Prioritet</string>
+  <string name="silent_mode_none">Ingen</string>
+  <string name="subscription_change_disabled_wifi_ap">Deaktivert Wi-Fi hotspot på grunn av endring i SIM-abbonement</string>
+  <string name="notify_turn_wifi_off_title">Deaktiver Wi-Fi</string>
 </resources>

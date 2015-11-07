@@ -43,8 +43,6 @@ uyguladığınız temayı değiştirmesine izin verir.</string>
   <string name="permdesc_changePrivacyGuardState">Uygulamaya başka bir uygulamanın Gizlilik Korumasını kullanıp kullanamayacağını belirleme olanağı verir. Bir uygulama Gizlilik Koruması ile çalışırken; kişiler, arama kayıtları ya da mesajlar gibi kişisel bilgilere ulaşamaz.</string>
   <string name="privacy_guard_notification">Gizlilik Koruması aktif</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> kişisel bilgilere ulaşamayacak</string>
-  <string name="permlab_useHardwareFramework">donanım altyapısını kullan</string>
-  <string name="permdesc_useHardwareFramework">Uygulamanın CM donanım altyapısına erişimine izin verir.</string>
   <string name="permlab_setKeyguardWallpaper">tuş kilidi duvar kağıdını ayarla</string>
   <string name="permdesc_setKeyguardWallpaper">Bir uygulamanın kilit ekranı duvar kağıdını değiştirmesine izin verir.</string>
   <string name="privacy_guard_dialog_title">Gizlilik Koruması</string>
@@ -138,6 +136,8 @@ uyguladığınız temayı değiştirmesine izin verir.</string>
   <string name="perf_profile_pwrsv">Güç tasarrufu</string>
   <string name="perf_profile_bal">Dengeli</string>
   <string name="perf_profile_perf">Performans</string>
+  <string name="perf_profile_bias_power">Verimlilik</string>
+  <string name="perf_profile_bias_perf">Hızlı</string>
   <string name="theme_install_error_title">Tema yüklenemedi</string>
   <string name="theme_install_error_message">%s yüklenemedi</string>
   <string name="theme_reset_notification_title">Tema sıfırlandı</string>
@@ -211,4 +211,8 @@ uyguladığınız temayı değiştirmesine izin verir.</string>
   <string name="permdesc_resetBatteryStats">Uygulamalara güncel düşük seviye pil kullanım verisini sıfırlama izni verir.</string>
   <string name="silent_mode_priority">Öncelik</string>
   <string name="silent_mode_none">Yok</string>
+  <string name="subscription_change_disabled_wifi_ap">SIM abonelik değişikliği nedeniyle Wi-Fi internet paylaşımı devre dışı bırakıldı</string>
+  <string name="notify_turn_wifi_off_title">Wi-Fi\'yi kapat</string>
+  <string name="permlab_thirdPartyKeyguard">üçüncü taraf kilit ekranı</string>
+  <string name="permdesc_thirdPartyKeyguard">Uygulamalara şifresiz kilit ekranı olarak kullanılabilme izni verir.</string>
 </resources>

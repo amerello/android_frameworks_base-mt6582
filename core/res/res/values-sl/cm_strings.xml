@@ -43,8 +43,6 @@
   <string name="permdesc_changePrivacyGuardState">Omogoča programu spreminjanje, ali se drug program izvaja s Privacy Guardom. Kadar se program izvaja s Privacy Guardom, ne bo imel dostopa do osebnih podatkov, kot so stiki, dnevniki klicev ali sporočila.</string>
   <string name="privacy_guard_notification">Privacy Guard dejaven</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ne bo imel dostopa do osebnih podatkov</string>
-  <string name="permlab_useHardwareFramework">uporaba strojnega ogrodja</string>
-  <string name="permdesc_useHardwareFramework">Omogoča programu dostop do strojnega ogrodja CM.</string>
   <string name="permlab_setKeyguardWallpaper">nastavitev slike ozadja keyguard</string>
   <string name="permdesc_setKeyguardWallpaper">Omogoča programu spreminjanje slike ozadja zaslona za zaklepanje.</string>
   <string name="privacy_guard_dialog_title">Privacy Guard</string>
@@ -138,6 +136,8 @@
   <string name="perf_profile_pwrsv">Varčevanje porabe</string>
   <string name="perf_profile_bal">Uravnoteženo</string>
   <string name="perf_profile_perf">Zmogljivost</string>
+  <string name="perf_profile_bias_power">Učinkovitost</string>
+  <string name="perf_profile_bias_perf">Hitro</string>
   <string name="theme_install_error_title">Namestitev teme je spodletela</string>
   <string name="theme_install_error_message">Namestitev %s je spodletela</string>
   <string name="theme_reset_notification_title">Ponastavitev theme</string>
@@ -169,8 +169,8 @@
   <string name="sd_ext_media_checking_notification_message">Preverjanje kartice SD za napake.</string>
   <string name="sd_ext_media_nofs_notification_title">Prazna SD kartica</string>
   <string name="sd_ext_media_nofs_notification_message">SD kartica je prazna ali pa ima nepodprt datotečni sistem.</string>
-  <string name="sd_ext_media_unmountable_notification_title">Poškodovana SD kartica</string>
-  <string name="sd_ext_media_unmountable_notification_message">SD kartica je poškodovana. Poskusite jo ponovno formatirati.</string>
+  <string name="sd_ext_media_unmountable_notification_title">Poškodovana kartica SD</string>
+  <string name="sd_ext_media_unmountable_notification_message">Kartica SD je poškodovana. Poskusite jo ponovno formatirati.</string>
   <string name="sd_ext_media_badremoval_notification_title">SD kartica nepričakovano odstranjena</string>
   <string name="sd_ext_media_badremoval_notification_message">Odklopite kartico SD pred odstranitvijo, da preprečite izgubo podatkov.</string>
   <string name="sd_ext_media_safe_unmount_notification_title">SD kartico lahko varno odstranite</string>
@@ -211,4 +211,8 @@
   <string name="permdesc_resetBatteryStats">Omogoča programu ponastavitev trenutnih podatkov uporabe baterije ob nizkem stanju.</string>
   <string name="silent_mode_priority">Prednost</string>
   <string name="silent_mode_none">Brez</string>
+  <string name="subscription_change_disabled_wifi_ap">Dostopna točka Wi-Fi je bila onemogočena zaradi spremembe naročnine SIM</string>
+  <string name="notify_turn_wifi_off_title">Izklopi Wi-Fi</string>
+  <string name="permlab_thirdPartyKeyguard">zaslon za zaklepanje tretjih oseb</string>
+  <string name="permdesc_thirdPartyKeyguard">Omogoča, da se program lahko uporabi kot nezanesljiv zaslon za zaklepanje.</string>
 </resources>

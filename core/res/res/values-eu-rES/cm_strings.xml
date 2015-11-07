@@ -41,8 +41,6 @@
   <string name="permdesc_changePrivacyGuardState">Beste aplikazio bat Privacy Guard menpean dagoen aldatzea ahalbidetzen dio aplikazioari. Aplikazio bat Privacy Guard menpean dagoenean ezin izango du datu pertsonalik ikusi, ez kontakturik, ez dei erregistrorik, ezta mezurik ere.</string>
   <string name="privacy_guard_notification">Privacy Guard aktibo</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> aplikazioak ezingo du datu pertsonalik irakurri</string>
-  <string name="permlab_useHardwareFramework">Hardware markoa erabili</string>
-  <string name="permdesc_useHardwareFramework">Aplikazioari hardware markorako sarbidea gaitzen dio.</string>
   <string name="permlab_setKeyguardWallpaper">Ezarri blokeo-pantailarako horma-papera</string>
   <string name="permdesc_setKeyguardWallpaper">Blokeo-pantailarako horma-papera aldatzea ahalbidetzen dio aplikazioari.</string>
   <string name="privacy_guard_dialog_title">Privacy Guard</string>
@@ -136,6 +134,8 @@
   <string name="perf_profile_pwrsv">Energia aurreztea</string>
   <string name="perf_profile_bal">Orekatua</string>
   <string name="perf_profile_perf">Errendimendua</string>
+  <string name="perf_profile_bias_power">Eraginkortasina</string>
+  <string name="perf_profile_bias_perf">Azkarra</string>
   <string name="theme_install_error_title">Ezin izan da gaia instalatu</string>
   <string name="theme_install_error_message">%s ez da instalatu</string>
   <string name="theme_reset_notification_title">Gaia leheneratu da</string>
@@ -209,4 +209,8 @@
   <string name="permdesc_resetBatteryStats">Bateriaren maila baxuko erabilera datuak leheneratzea ahalbidetzen dio aplikazioari.</string>
   <string name="silent_mode_priority">Lehentasuna</string>
   <string name="silent_mode_none">Bat ere ez</string>
+  <string name="subscription_change_disabled_wifi_ap">Wi-Fi gunea desgaitu da SIM harpidetza aldatu delako</string>
+  <string name="notify_turn_wifi_off_title">Ezgaitu Wi-Fia</string>
+  <string name="permlab_thirdPartyKeyguard">hirugarrengoen blokeo pantaila</string>
+  <string name="permdesc_thirdPartyKeyguard">Aplikazio bat blokeo pantaila ez seguru gisa erabiltzea ahalbidetzen du.</string>
 </resources>

@@ -41,8 +41,6 @@
   <string name="permdesc_changePrivacyGuardState">מאפשר ליישום לקבוע האם יישום אחר יפעל תחת שומר הפרטיות. כאשר יישום פועל תחת שומר הפרטיות, לא תהיה לו גישה למידע פרטי כמו אנשי קשר, יומן שיחות והודעות.</string>
   <string name="privacy_guard_notification">שומר הפרטיות פעיל</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> לא יוכל לגשת למידע אישי</string>
-  <string name="permlab_useHardwareFramework">השתמש במסגרת חומרתית</string>
-  <string name="permdesc_useHardwareFramework">אפשר ליישום לגשת למסגרת החומרתית של CM.</string>
   <string name="permlab_setKeyguardWallpaper">הגדרת טפט למסך הנעילה</string>
   <string name="permdesc_setKeyguardWallpaper">מאפשר ליישום לשנות את הטפט של מסך הנעילה.</string>
   <string name="privacy_guard_dialog_title">שומר הפרטיות</string>
@@ -67,7 +65,7 @@
   <string name="adb_active_custom_tile_both">USB ורשת</string>
   <string name="adb_active_custom_tile_usb">USB</string>
   <string name="adb_active_custom_tile_net">רשת</string>
-  <string name="permlab_interceptPackageLaunch">יירט הפעלת יישום</string>
+  <string name="permlab_interceptPackageLaunch">יירוט הפעלת יישום</string>
   <string name="permdesc_interceptPackageLaunch">מאפשר ליישום ליירט הפעלה של יישומים אחרים</string>
   <string name="app_ops_access_camera">גישה למצלמה</string>
   <string name="app_ops_access_location">גישה למיקום שלך</string>
@@ -136,6 +134,8 @@
   <string name="perf_profile_pwrsv">חיסכון בסוללה</string>
   <string name="perf_profile_bal">מאוזן</string>
   <string name="perf_profile_perf">ביצועים</string>
+  <string name="perf_profile_bias_power">יעילות</string>
+  <string name="perf_profile_bias_perf">מהיר</string>
   <string name="theme_install_error_title">התקנת ערכת העיצוב נכשלה</string>
   <string name="theme_install_error_message">התקנת %s נכשלה</string>
   <string name="theme_reset_notification_title">אפס ערכת עיצוב</string>
@@ -166,12 +166,12 @@
   <string name="sd_ext_media_checking_notification_title">מכין כרטיס זיכרון</string>
   <string name="sd_ext_media_checking_notification_message">בודק כרטיס זיכרון לשגיאות.</string>
   <string name="sd_ext_media_nofs_notification_title">כרטיס זיכרון ריק</string>
-  <string name="sd_ext_media_nofs_notification_message">כרטיס הזיכרון הינו ריק, או בעל קבצים שהמערכת לא תומכת בהם.</string>
+  <string name="sd_ext_media_nofs_notification_message">כרטיס הזיכרון ריק, או בעל קבצים שהמערכת לא תומכת בהם.</string>
   <string name="sd_ext_media_unmountable_notification_title">כרטיס זיכרון פגום</string>
   <string name="sd_ext_media_unmountable_notification_message">כרטיס הזיכרון פגום. נסה לפרמט אותו מחדש.</string>
   <string name="sd_ext_media_badremoval_notification_title">כרטיס זיכרון הוסר באופן פתאומי</string>
   <string name="sd_ext_media_badremoval_notification_message">בטל את טעינת כרטיס הזיכרון לפני הסרתו מהמכשיר על מנת למנוע אובדן נתונים.</string>
-  <string name="sd_ext_media_safe_unmount_notification_title">כרטיס זיכרון ניתן להסרה בבטחה</string>
+  <string name="sd_ext_media_safe_unmount_notification_title">כרטיס הזיכרון ניתן להסרה בבטחה</string>
   <string name="sd_ext_media_safe_unmount_notification_message">ניתן להסיר בבטחה את כרטיס הזיכרון.</string>
   <string name="sd_ext_media_nomedia_notification_title">כרטיס זיכרון הוסר</string>
   <string name="sd_ext_media_nomedia_notification_message">כרטיס זיכרון הוסר. הכנס כרטיס חדש.</string>
@@ -209,4 +209,8 @@
   <string name="permdesc_resetBatteryStats">אפשר ליישום לאפס נתוני רמה-נמוכה של השימוש בסוללה.</string>
   <string name="silent_mode_priority">עדיפות</string>
   <string name="silent_mode_none">ללא</string>
+  <string name="subscription_change_disabled_wifi_ap">נקודת Wi-Fi חמה הושבתה עקב שינוי מנוי SIM</string>
+  <string name="notify_turn_wifi_off_title">כיבוי Wi-Fi</string>
+  <string name="permlab_thirdPartyKeyguard">מסך נעילה של צד שלישי</string>
+  <string name="permdesc_thirdPartyKeyguard">מאפשר ליישום לשמש כמסך נעילה לא מאובטח.</string>
 </resources>
