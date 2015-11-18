@@ -41,8 +41,6 @@
   <string name="permdesc_changePrivacyGuardState">Permet à l\'application d\'en exécuter une autre avec la protection des données. Lorsqu\'une application est exécutée avec la protection des données, elle n\'aura pas accès aux données personnelles telles que les contacts, les journaux d\'appels ou les messages.</string>
   <string name="privacy_guard_notification">Protection des données activée</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> ne sera pas en mesure d\'accéder aux données personnelles</string>
-  <string name="permlab_useHardwareFramework">Utiliser le framework matériel</string>
-  <string name="permdesc_useHardwareFramework">Permet à une application l\'accès au framework matériel de CM.</string>
   <string name="permlab_setKeyguardWallpaper">Définir le fond d\'écran de verrouillage</string>
   <string name="permdesc_setKeyguardWallpaper">Permet à l\'application de changer le fond de l\'écran de verrouillage.</string>
   <string name="privacy_guard_dialog_title">Protection des données</string>
@@ -209,4 +207,8 @@
   <string name="permdesc_resetBatteryStats">Permet à une application de réinitialiser les données actuelles d\'utilisation de la batterie à faible niveau.</string>
   <string name="silent_mode_priority">Priorité</string>
   <string name="silent_mode_none">Aucun</string>
+  <string name="subscription_change_disabled_wifi_ap">Point d\'accès Wi\u2011Fi désactivé en raison d\'un changement d\'abonnement SIM</string>
+  <string name="notify_turn_wifi_off_title">Désactiver le Wi-Fi</string>
+  <string name="permlab_thirdPartyKeyguard">écran de verrouillage alternatif</string>
+  <string name="permdesc_thirdPartyKeyguard">Permet à l\'application d\'être utilisée comme un écran de verrouillage non sécurisé.</string>
 </resources>

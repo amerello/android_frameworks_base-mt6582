@@ -41,8 +41,6 @@
   <string name="permdesc_changePrivacyGuardState">他のアプリでプライバシーガードを有効にするかどうかの変更をアプリに許可します。プライバシーガードを有効にしてアプリを実行すると、そのアプリは連絡先、通話履歴、メッセージなどの個人データにアクセスできなくなります。</string>
   <string name="privacy_guard_notification">プライバシーガードが有効です</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g>は個人データにアクセスできません</string>
-  <string name="permlab_useHardwareFramework">ハードウェアフレームワークの使用</string>
-  <string name="permdesc_useHardwareFramework">CMハードウェアフレームワークへのアクセスをアプリに許可します。</string>
   <string name="permlab_setKeyguardWallpaper">キーガードの壁紙の設定</string>
   <string name="permdesc_setKeyguardWallpaper">ロック画面の壁紙の変更をアプリに許可します。</string>
   <string name="privacy_guard_dialog_title">プライバシーガード</string>
@@ -136,6 +134,8 @@
   <string name="perf_profile_pwrsv">省電力</string>
   <string name="perf_profile_bal">バランス</string>
   <string name="perf_profile_perf">パフォーマンス</string>
+  <string name="perf_profile_bias_power">効率</string>
+  <string name="perf_profile_bias_perf">クイック</string>
   <string name="theme_install_error_title">テーマをインストールできませんでした</string>
   <string name="theme_install_error_message">%sをインストールできませんでした</string>
   <string name="theme_reset_notification_title">テーマのリセット</string>
@@ -209,4 +209,8 @@
   <string name="permdesc_resetBatteryStats">現在の電池消費量の低レベルデータをリセットすることをアプリに許可します。</string>
   <string name="silent_mode_priority">優先順位</string>
   <string name="silent_mode_none">なし</string>
+  <string name="subscription_change_disabled_wifi_ap">SIMサブスクリプションの変更によってWi-Fiアクセスポイントが無効になりました</string>
+  <string name="notify_turn_wifi_off_title">Wi-FiをOFFにする</string>
+  <string name="permlab_thirdPartyKeyguard">サードパーティのロック画面</string>
+  <string name="permdesc_thirdPartyKeyguard">パスワードのないロック画面として使用されることをアプリに許可します。</string>
 </resources>

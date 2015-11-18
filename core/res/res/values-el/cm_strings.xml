@@ -41,8 +41,6 @@
   <string name="permdesc_changePrivacyGuardState">Επιτρέπει στην εφαρμογή τον χειρισμό άλλων εφαρμογών με την Προστασία Απορρήτου. Όταν μια εφαρμογή τρέχει με την Προστασία Απορρήτου, δεν θα έχει πρόσβαση στα προσωπικά σας δεδομένα όπως επαφές, μηνύματα ή το αρχείο κλήσεων.</string>
   <string name="privacy_guard_notification">Προστασία Απορρήτου ενεργή</string>
   <string name="privacy_guard_notification_detail"><xliff:g id="app">%1$s</xliff:g> δεν θα μπορεί να έχει πρόσβαση στα προσωπικά σας δεδομένα</string>
-  <string name="permlab_useHardwareFramework">χρήση του πλαισίου υλικού</string>
-  <string name="permdesc_useHardwareFramework">Επιτρέπει σε μια εφαρμογή την πρόσβαση στο πλαίσιο υλικού του CM.</string>
   <string name="permlab_setKeyguardWallpaper">ορισμός ταπετσαρίας οθόνης κλειδώματος</string>
   <string name="permdesc_setKeyguardWallpaper">Επιτρέπει σε μια εφαρμογή την αλλαγή της ταπετσαρίας της οθόνης κλειδώματος.</string>
   <string name="privacy_guard_dialog_title">Προστασία Απορρήτου</string>
@@ -136,6 +134,8 @@
   <string name="perf_profile_pwrsv">Εξοικονόμηση ενέργειας</string>
   <string name="perf_profile_bal">Ισορροπημένο</string>
   <string name="perf_profile_perf">Επιδόσεις</string>
+  <string name="perf_profile_bias_power">Αποδοτικό</string>
+  <string name="perf_profile_bias_perf">Γρήγορο</string>
   <string name="theme_install_error_title">Αποτυχία εγκατάστασης του θέματος</string>
   <string name="theme_install_error_message">Αποτυχία εγκατάστασης του %s</string>
   <string name="theme_reset_notification_title">Επαναφορά θέματος</string>
@@ -209,4 +209,8 @@
   <string name="permdesc_resetBatteryStats">Επιτρέπει σε μια εφαρμογή να κάνει επαναφορά τα χαμηλού επιπέδου δεδομένα χρήσης μπαταρίας.</string>
   <string name="silent_mode_priority">Προτεραιότητα</string>
   <string name="silent_mode_none">Κανένα</string>
+  <string name="subscription_change_disabled_wifi_ap">Το Wi-Fi hotspot απενεργοποιήθηκε λόγω αλλαγής συνδρομής SIM</string>
+  <string name="notify_turn_wifi_off_title">Απενεργοποίηση Wi-Fi</string>
+  <string name="permlab_thirdPartyKeyguard">χρήση ως οθόνη κλειδώματος</string>
+  <string name="permdesc_thirdPartyKeyguard">Επιτρέπει σε μια εφαρμογή να χρησιμοποιηθεί ως μια ανασφαλής οθόνη κλειδώματος.</string>
 </resources>
